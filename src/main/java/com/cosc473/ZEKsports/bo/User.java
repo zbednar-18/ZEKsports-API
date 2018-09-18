@@ -1,7 +1,10 @@
-package com.cosc465.ZEKsports.bo;
+package com.cosc473.ZEKsports.bo;
 
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document
 public class User {
-
+	
 	private String userName;
 	private String password;
 

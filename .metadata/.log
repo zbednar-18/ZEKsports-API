@@ -829,6 +829,7 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+<<<<<<< HEAD
 !SESSION 2018-09-16 22:36:35.043 -----------------------------------------------
 eclipse.buildId=4.8.0.I20180611-0500
 java.version=1.8.0_73
@@ -838,6 +839,17 @@ Framework arguments:  -product org.eclipse.epp.package.java.product
 Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product
 
 !ENTRY org.eclipse.egit.core 2 0 2018-09-16 22:37:05.649
+=======
+!SESSION 2018-09-16 23:02:23.526 -----------------------------------------------
+eclipse.buildId=4.8.0.I20180611-0500
+java.version=1.8.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_US
+Framework arguments:  -product org.eclipse.epp.package.java.product -product org.eclipse.epp.package.java.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.java.product -data C:\Users\Wilson\Desktop\zeksports -product org.eclipse.epp.package.java.product
+
+!ENTRY org.eclipse.egit.core 2 0 2018-09-16 23:02:25.667
+>>>>>>> 4e538c9e9732ea4a895c8b2e0964dc6010b7077b
 !MESSAGE Builtin LFS support not present/detected
 !STACK 0
 java.lang.ClassNotFoundException: org.eclipse.jgit.lfs.BuiltinLFS cannot be found by org.eclipse.egit.core_5.0.0.201806131550-r
@@ -845,9 +857,15 @@ java.lang.ClassNotFoundException: org.eclipse.jgit.lfs.BuiltinLFS cannot be foun
 	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:419)
 	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:411)
 	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:150)
+<<<<<<< HEAD
 	at java.lang.ClassLoader.loadClass(Unknown Source)
 	at java.lang.Class.forName0(Native Method)
 	at java.lang.Class.forName(Unknown Source)
+=======
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at java.lang.Class.forName0(Native Method)
+	at java.lang.Class.forName(Class.java:264)
+>>>>>>> 4e538c9e9732ea4a895c8b2e0964dc6010b7077b
 	at org.eclipse.egit.core.Activator.registerBuiltinLFS(Activator.java:279)
 	at org.eclipse.egit.core.Activator.start(Activator.java:212)
 	at org.eclipse.osgi.internal.framework.BundleContextImpl$3.run(BundleContextImpl.java:779)
@@ -869,7 +887,11 @@ java.lang.ClassNotFoundException: org.eclipse.jgit.lfs.BuiltinLFS cannot be foun
 	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:419)
 	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:411)
 	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:150)
+<<<<<<< HEAD
 	at java.lang.ClassLoader.loadClass(Unknown Source)
+=======
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+>>>>>>> 4e538c9e9732ea4a895c8b2e0964dc6010b7077b
 	at org.eclipse.egit.ui.Activator$RepositoryChangeScanner.<init>(Activator.java:921)
 	at org.eclipse.egit.ui.Activator.setupRepoChangeScanner(Activator.java:1034)
 	at org.eclipse.egit.ui.Activator.start(Activator.java:336)
@@ -891,7 +913,11 @@ java.lang.ClassNotFoundException: org.eclipse.jgit.lfs.BuiltinLFS cannot be foun
 	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:419)
 	at org.eclipse.osgi.internal.loader.BundleLoader.findClass(BundleLoader.java:411)
 	at org.eclipse.osgi.internal.loader.ModuleClassLoader.loadClass(ModuleClassLoader.java:150)
+<<<<<<< HEAD
 	at java.lang.ClassLoader.loadClass(Unknown Source)
+=======
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+>>>>>>> 4e538c9e9732ea4a895c8b2e0964dc6010b7077b
 	at org.eclipse.osgi.internal.framework.EquinoxBundle.loadClass(EquinoxBundle.java:609)
 	at org.eclipse.core.internal.registry.osgi.RegistryStrategyOSGI.createExecutableExtension(RegistryStrategyOSGI.java:177)
 	at org.eclipse.core.internal.registry.ExtensionRegistry.createExecutableExtension(ExtensionRegistry.java:931)
@@ -909,6 +935,10 @@ java.lang.ClassNotFoundException: org.eclipse.jgit.lfs.BuiltinLFS cannot be foun
 	at org.eclipse.ui.internal.Workbench.init(Workbench.java:1654)
 	at org.eclipse.ui.internal.Workbench.runUI(Workbench.java:2859)
 	at org.eclipse.ui.internal.Workbench.lambda$3(Workbench.java:654)
+<<<<<<< HEAD
+=======
+	at org.eclipse.ui.internal.Workbench$$Lambda$19/715534618.run(Unknown Source)
+>>>>>>> 4e538c9e9732ea4a895c8b2e0964dc6010b7077b
 	at org.eclipse.core.databinding.observable.Realm.runWithDefault(Realm.java:336)
 	at org.eclipse.ui.internal.Workbench.createAndRunWorkbench(Workbench.java:597)
 	at org.eclipse.ui.PlatformUI.createAndRunWorkbench(PlatformUI.java:148)
@@ -919,13 +949,20 @@ java.lang.ClassNotFoundException: org.eclipse.jgit.lfs.BuiltinLFS cannot be foun
 	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:388)
 	at org.eclipse.core.runtime.adaptor.EclipseStarter.run(EclipseStarter.java:243)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+<<<<<<< HEAD
 	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
 	at java.lang.reflect.Method.invoke(Unknown Source)
+=======
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:497)
+>>>>>>> 4e538c9e9732ea4a895c8b2e0964dc6010b7077b
 	at org.eclipse.equinox.launcher.Main.invokeFramework(Main.java:656)
 	at org.eclipse.equinox.launcher.Main.basicRun(Main.java:592)
 	at org.eclipse.equinox.launcher.Main.run(Main.java:1498)
 
+<<<<<<< HEAD
 !ENTRY org.eclipse.egit.ui 2 0 2018-09-16 22:37:31.834
 !MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
 user global configuration and to define the default location to store repositories: 'C:\Users\Kyle'. If this is
@@ -1085,3 +1122,11 @@ org.apache.maven.archetype.old.ArchetypeTemplateProcessingException: Unable to a
 	at org.eclipse.m2e.core.ui.internal.wizards.AbstractCreateMavenProjectJob.runInWorkspace(AbstractCreateMavenProjectJob.java:67)
 	at org.eclipse.core.internal.resources.InternalWorkspaceJob.run(InternalWorkspaceJob.java:39)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:60)
+=======
+!ENTRY org.eclipse.egit.ui 2 0 2018-09-16 23:02:29.739
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Wilson'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+>>>>>>> 4e538c9e9732ea4a895c8b2e0964dc6010b7077b
