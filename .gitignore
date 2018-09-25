@@ -24,3 +24,9 @@
 /nbdist/
 /.nb-gradle/
 /.metadata/
+
+# Maven
+log/
+target/
+mvnw
+mvnw.cmd
