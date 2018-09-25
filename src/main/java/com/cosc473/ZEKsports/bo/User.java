@@ -2,7 +2,7 @@ package com.cosc473.ZEKsports.bo;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document
+@Document(collection = "user")
 public class User {
 
 	private String userName;
