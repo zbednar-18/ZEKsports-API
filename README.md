@@ -3,9 +3,9 @@ Back-end API for our COSC 473 website.
 
 
 
-##End Points
+# End Points
 
-##Schedules
+## Schedules
 
 ### /nfl/schedule
 
@@ -79,7 +79,7 @@ Example Response
 ```
 
 
-##Players
+## Players
 
 ### /nfl/player
 return all players in the current NFL season
