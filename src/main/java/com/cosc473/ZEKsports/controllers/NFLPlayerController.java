@@ -14,7 +14,7 @@ import com.cosc473.ZEKsports.repositories.NFLPlayerRepository;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/NFL")
+@RequestMapping(value = "/nfl")
 public class NFLPlayerController {
 
 	@Autowired
