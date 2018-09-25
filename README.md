@@ -34,7 +34,6 @@ example call: /nfl/schedule/date/2018-09-23
 Example Response
 
 {
-    "_id" : ObjectId("5ba96594d1124d39508b12a8"),
     "week" : "3",
     "date" : "2018-09-23",
     "time" : "1:00PM",
