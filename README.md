@@ -7,7 +7,7 @@ Back-end API for our COSC 473 website.
 
 ## Schedules
 
-### /nfl/schedule
+### /nfl/schedules
 ### method = GET
 
 returns schedule for the entire season for all teams
@@ -25,7 +25,7 @@ Example Response
 }
 ```
 
-### /nfl/schedule/date/{date} 
+### /nfl/schedules/dates/{date} 
 ###  method = GET
 return games that are scheduled on that date
 date must be formatted in yyyy-mm-dd
@@ -45,7 +45,7 @@ Example Response
 }
 ```
 
-### /nfl/schedule/team/{team}
+### /nfl/schedules/teams/{team}
 ###  method = GET
 return all games for a team for an entire season
 
@@ -63,7 +63,7 @@ Example Response
 }
 ```
 
-### /nfl/schedule/week/{week}
+### /nfl/schedules/weeks/{week}
 ###  method = GET
 return all games for a given week of the nfl season
 
@@ -84,7 +84,7 @@ Example Response
 
 ## Players
 
-### /nfl/player
+### /nfl/players
 ###  method = GET
 return all players in the current NFL season
 
@@ -105,7 +105,7 @@ Example Response
 }
 ```
 
-### /nfl/player/team/{team}
+### /nfl/players/teams/{team}
 ###  method = GET
 return all players who belong to the team queried for the current season
 
@@ -126,7 +126,7 @@ Example Response
 }
 ```
 
-### /nfl/player/position/{position}
+### /nfl/players/positions/{position}
 ###  method = GET
 return all players who belong to the team queried for the current season
 
