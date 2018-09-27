@@ -19,23 +19,25 @@ public class NFLPlayerController {
 
 	@Autowired
 	private NFLPlayerRepository NFLPlayerRepository;
-	
-	@RequestMapping(value = "/player", method = RequestMethod.GET)
+
+	@RequestMapping(value = "/players", method = RequestMethod.GET)
 	public List<NFLPlayer> findAllNFLPlayers() {
 		return NFLPlayerRepository.findAll();
 	}
-	
-	@RequestMapping(value = "/player/{firstName}", method = RequestMethod.GET)
-	public void findNFLPlayerByFirstName(@PathVariable("firstName") String firstName) {
+
+	@RequestMapping(value = "/players/firstName/{firstName}/lastName/{lastName}", method = RequestMethod.GET)
+	public NFLPlayer findNFLPlayerByName(@PathVariable("firstName") String firstName,
+			@PathVariable("lastName") String lastName) {
+		return null;
 	}
-	
-	@RequestMapping (value = "/player/team/{team}")
-	public List<NFLPlayer> findNFLPlayersByTeam(@PathVariable("team") String team){
+
+	@RequestMapping(value = "/players/teams/{team}")
+	public List<NFLPlayer> findNFLPlayersByTeam(@PathVariable("team") String team) {
 		return NFLPlayerRepository.findByteam(team);
 	}
-	
-	@RequestMapping(value = "/player/position/{position}")
-	public List<NFLPlayer> findNFLPlayerByPosition(@PathVariable("position") String position){
+
+	@RequestMapping(value = "/players/positions/{position}")
+	public List<NFLPlayer> findNFLPlayerByPosition(@PathVariable("position") String position) {
 		return NFLPlayerRepository.findByposition(position);
 	}
 }

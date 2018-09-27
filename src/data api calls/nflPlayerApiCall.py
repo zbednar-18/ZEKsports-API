@@ -33,6 +33,7 @@ for data in content['rosterplayers']['playerentry']:
     isRookie = "false"
     if("Height" in data['player']):
         height = data['player']['Height']
+        height.replace("'/'", "")
     if("Weight" in data['player']):
         weight = data['player']['Weight']
     if("JerseyNumber" in data['player']):

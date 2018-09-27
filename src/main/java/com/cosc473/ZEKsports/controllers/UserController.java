@@ -25,25 +25,21 @@ public class UserController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public String createUser(@RequestBody Map<String, String> payload) {
-		
-		//TODO: add validation feature, ensure the email submitted is valid.
 		if (userRepository.findByuserName(payload.get("userName")) == null) {
 			byte[] salt = Password.getNextSalt();
 			byte[] securePassword = Password.hash(payload.get("userName").toCharArray(), salt);
-			userRepository.save(new User(payload.get("userName"), Base64Utils.encodeToString(securePassword), salt));
-			System.out.println("record inserted into collection");
-			return "record inserted into collection";
+			userRepository.save(new User(payload.get("userName"), securePassword, salt));
+			System.out.println("hello");
+			return payload.get("userName");
 		} else {
-			System.out.println("username already exists");
 			return "username already exists";
 		}
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public User loginUser(@RequestBody Map<String, String> payload) {
 		User user = userRepository.findByuserName(payload.get("userName"));
-		if (Password.isExpectedPassword(payload.get("password").toCharArray(), user.getSalt(),
-				Base64Utils.decodeFromString(user.getPassword()))) {
+		if (Password.isExpectedPassword(payload.get("password").toCharArray(), user.getSalt(), user.getPassword())) {
 			System.out.println("it worked");
 			return user;
 		} else {
