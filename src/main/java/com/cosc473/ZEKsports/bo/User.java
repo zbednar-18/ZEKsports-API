@@ -2,14 +2,14 @@ package com.cosc473.ZEKsports.bo;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "user")
+@Document(collection = "User")
 public class User {
 
 	private String userName;
-	private String password;
+	private byte[] password;
 	private byte[] salt;
 
-	public User(String userName, String password, byte[] salt) {
+	public User(String userName, byte[] password, byte[] salt) {
 		this.userName = userName;
 		this.password = password;
 		this.salt = salt;
@@ -26,11 +26,11 @@ public class User {
 		this.userName = userName;
 	}
 
-	public String getPassword() {
+	public byte[] getPassword() {
 		return password;
 	}
 
-	public void setPassword(String password) {
+	public void setPassword(byte[] password) {
 		this.password = password;
 	}
 
