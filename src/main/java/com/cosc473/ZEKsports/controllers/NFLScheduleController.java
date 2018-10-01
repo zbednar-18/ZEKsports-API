@@ -1,5 +1,8 @@
 package com.cosc473.ZEKsports.controllers;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,20 @@ public class NFLScheduleController {
 	@RequestMapping(value = "/schedules/weeks/{week}", method = RequestMethod.GET)
 	public List<NFLSchedule> findGamesByWeek(@PathVariable("week") String week) {
 		return NFLScheduleRepository.findByweek(week);
+	}
+	
+	@RequestMapping(value = "/schedules/weeks/current", method = RequestMethod.GET)
+	public String findCurrentWeek(){
+		Date date = new Date();
+		SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
+		List<NFLSchedule> list = NFLScheduleRepository.findBydate(ft.format(date));
+		while (list.isEmpty()){
+			Calendar c = Calendar.getInstance(); 
+			c.setTime(date); 
+			c.add(Calendar.DATE, 1);
+			list = NFLScheduleRepository.findBydate(ft.format(c.getTime()));
+		}
+		return list.get(0).getWeek();
 	}
 
 	@RequestMapping(value = "/schedules/dates/{date}", method = RequestMethod.GET)
