@@ -31,11 +31,6 @@ public class NFLPlayerController {
 		return null;
 	}
 
-	@RequestMapping(value = "/players/teams/{team}")
-	public List<NFLPlayer> findNFLPlayersByTeam(@PathVariable("team") String team) {
-		return NFLPlayerRepository.findByteam(team);
-	}
-
 	@RequestMapping(value = "/players/positions/{position}")
 	public List<NFLPlayer> findNFLPlayerByPosition(@PathVariable("position") String position) {
 		return NFLPlayerRepository.findByposition(position);
