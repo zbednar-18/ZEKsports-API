@@ -30,7 +30,7 @@ Example Response
 return games that are scheduled on that date
 date must be formatted in yyyy-mm-dd
 
-example call: /nfl/schedule/date/2018-09-23
+example call: /nfl/schedulse/dates/2018-09-23
 
 ```
 Example Response
@@ -49,7 +49,7 @@ Example Response
 ###  method = GET
 return all games for a team for an entire season
 
-example call: /nfl/schedule/team/Steelers
+example call: /nfl/schedules/teams/Steelers
 
 ```
 Example Response
@@ -67,7 +67,7 @@ Example Response
 ###  method = GET
 return all games for a given week of the nfl season
 
-example call: /nfl/schedule/week/2
+example call: /nfl/schedules/weeks/2
 
 ```
 Example Response
@@ -81,31 +81,48 @@ Example Response
 }
 ```
 
+## Teams
 
-## Players
-
-### /nfl/players
+### /nfl/teams
 ###  method = GET
-return all players in the current NFL season
+return all teams in the current NFL season
 
-example call: /nfl/player
+example call: /nfl/teams
 
 ```
 Example Response
 {
-    "firstName" : "Sam",
-    "lastName" : "Acho",
-    "jerseyNumber" : "49",
-    "position" : "OLB",
-    "height" : "6'3\"",
-    "weight" : "257",
-    "dateOfBirth" : "1988-09-06",
-    "isRookie" : "false",
-    "team" : "Bears"
-}
+    "_id" : ObjectId("5bb1675ad1124d2b08528db2"),
+    "teamName" : "Jaguars",
+    "teamCity" : "Jacksonville",
+    "teamRank" : 10,
+    "gamesPlayed" : "3",
+    "passAttempts" : "112",
+    "passCompletions" : "68",
+    "passCompletionsPct" : "60.7",
+    "grossPassYards" : "718",
+    "netPassYards" : "700",
+    "passAverageYards" : "6.4",
+    "passYardsPerAttempt" : "6.0",
+    "passTouchdowns" : "5",
+    "passInterceptions" : "2",
+    "rushAttempts" : "71",
+    "rushYards" : "328",
+    "rushAverageYards" : "4.6",
+    "fumbles" : "0",
+    "recTouchdowns" : "5",
+    "sacks" : "7",
+    "tackles" : "178",
+    "safeties" : "0",
+    "interceptions" : "1",
+    "penalties" : "24",
+    "offenseYards" : "1032",
+    "totalTouchDowns" : "5",
+    "totalTwoPointConversions" : "0"
+},
 ```
 
-### /nfl/players/teams/{team}
+### /nfl/teams/{team}/players
 ###  method = GET
 return all players who belong to the team queried for the current season
 
@@ -123,26 +140,5 @@ Example Response
     "dateOfBirth" : "1988-09-06",
     "isRookie" : "false",
     "team" : "Bears"
-}
-```
-
-### /nfl/players/positions/{position}
-###  method = GET
-return all players who belong to the team queried for the current season
-
-example call: /nfl/player/position/QB
-
-```
-Example Response
-{
-    "firstName" : "Brandon",
-    "lastName" : "Allen",
-    "jerseyNumber" : "10",
-    "position" : "QB",
-    "height" : "6'2\"",
-    "weight" : "214",
-    "dateOfBirth" : "1992-09-05",
-    "isRookie" : "false",
-    "team" : "Rams"
-}
+},
 ```
