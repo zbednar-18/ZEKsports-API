@@ -9,7 +9,6 @@ import com.cosc473.ZEKsports.utils.Password;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.util.Base64Utils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,22 +28,17 @@ public class UserController {
 			byte[] salt = Password.getNextSalt();
 			byte[] securePassword = Password.hash(payload.get("userName").toCharArray(), salt);
 			userRepository.save(new User(payload.get("userName"), securePassword, salt));
-			System.out.println("hello");
 			return payload.get("userName");
-		} else {
-			return "username already exists";
 		}
+		return "username already exists";
 	}
 
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public User loginUser(@RequestBody Map<String, String> payload) {
 		User user = userRepository.findByuserName(payload.get("userName"));
 		if (Password.isExpectedPassword(payload.get("password").toCharArray(), user.getSalt(), user.getPassword())) {
-			System.out.println("it worked");
 			return user;
-		} else {
-			System.out.println("no bueno");
-			return null;
 		}
+		return null;
 	}
 }
