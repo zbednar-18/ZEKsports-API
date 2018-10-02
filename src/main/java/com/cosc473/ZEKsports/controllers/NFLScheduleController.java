@@ -38,11 +38,13 @@ public class NFLScheduleController {
 		Date date = new Date();
 		SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
 		List<NFLSchedule> list = NFLScheduleRepository.findBydate(ft.format(date));
+		Calendar c;
 		while (list.isEmpty()){
-			Calendar c = Calendar.getInstance(); 
+			c = Calendar.getInstance(); 
 			c.setTime(date); 
 			c.add(Calendar.DATE, 1);
-			list = NFLScheduleRepository.findBydate(ft.format(c.getTime()));
+			date = c.getTime();
+			list = NFLScheduleRepository.findBydate(ft.format(date));
 		}
 		return list.get(0).getWeek();
 	}
