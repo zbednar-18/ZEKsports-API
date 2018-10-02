@@ -142,3 +142,56 @@ Example Response
     "team" : "Bears"
 },
 ```
+
+## Players
+### /nfl/players
+return all players in the current NFL season
+ example call: /nfl/players
+ ```
+Example Response
+{
+    "firstName" : "Sam",
+    "lastName" : "Acho",
+    "jerseyNumber" : "49",
+    "position" : "OLB",
+    "height" : "6'3\"",
+    "weight" : "257",
+    "dateOfBirth" : "1988-09-06",
+    "isRookie" : "false",
+    "team" : "Bears"
+}
+```
+ ### /nfl/players/teams/{team}
+return all players who belong to the team queried for the current season
+ example call: /nfl/players/teams/Bears
+ ```
+Example Response
+{
+    "firstName" : "Sam",
+    "lastName" : "Acho",
+    "jerseyNumber" : "49",
+    "position" : "OLB",
+    "height" : "6'3\"",
+    "weight" : "257",
+    "dateOfBirth" : "1988-09-06",
+    "isRookie" : "false",
+    "team" : "Bears"
+}
+```
+ ### /nfl/players/positions/{position}
+return all players who belong to the team queried for the current season
+ example call: /nfl/players/positions/QB
+ ```
+Example Response
+{
+    "firstName" : "Brandon",
+    "lastName" : "Allen",
+    "jerseyNumber" : "10",
+    "position" : "QB",
+    "height" : "6'2\"",
+    "weight" : "214",
+    "dateOfBirth" : "1992-09-05",
+    "isRookie" : "false",
+    "team" : "Rams"
+}
+```
