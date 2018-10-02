@@ -30,3 +30,6 @@ log/
 target/
 mvnw
 mvnw.cmd
+
+# eclipse
+.metadata
