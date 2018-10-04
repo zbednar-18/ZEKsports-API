@@ -30,6 +30,11 @@ public class NFLTeamController {
 	public List<NFLTeam> getAllTeams() {
 		return NFLTeamRepository.findAll();
 	}
+	
+	@RequestMapping(value = "/teams/{teamName}")
+	public List<NFLTeam> findNFLTeamByName(@PathVariable("teamName") String teamName){
+		return NFLTeamRepository.findByteamName(teamName);
+	}
 
 	@RequestMapping(value = "/teams/{team}/players", method = RequestMethod.GET)
 	public List<NFLPlayer> findNFLPlayersByTeam(@PathVariable("team") String team) {
