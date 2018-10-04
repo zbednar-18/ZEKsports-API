@@ -27,7 +27,7 @@ public class UserController {
 		if (userRepository.findByuserName(payload.get("userName")) == null) {
 			byte[] salt = Password.getNextSalt();
 			byte[] securePassword = Password.hash(payload.get("userName").toCharArray(), salt);
-			userRepository.save(new User(payload.get("userName"), securePassword, salt));
+			userRepository.save(new User(payload.get("userName"), securePassword, salt, payload.get("teamSubscription")));
 			return payload.get("userName");
 		}
 		return "username already exists";

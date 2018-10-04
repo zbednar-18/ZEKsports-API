@@ -53,7 +53,7 @@ public class NFLScheduleController {
 	public List<NFLSchedule> findGamesByDate(@PathVariable("date") String date) {
 		return NFLScheduleRepository.findBydate(date);
 	}
-
+	
 	@RequestMapping(value = "/schedules/teams/{team}", method = RequestMethod.GET)
 	public List<NFLSchedule> findGamesByTeam(@PathVariable("team") String team) {
 		List<NFLSchedule> awayTeams = NFLScheduleRepository.findByawayteam(team);

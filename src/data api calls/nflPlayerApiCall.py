@@ -6,7 +6,7 @@ import pymongo
 def send_request():
     # Request
     api_key = "46dacc81-c83f-4fec-97ed-7c45f7"
-    pull = "https://api.mysportsfeeds.com/v1.2/pull/nfl/2018-regular/roster_players.json"
+    pull = "https://api.mysportsfeeds.com/v1.2/pull/nfl/2018-regular/cumulative_player_stats.json"
     password = "Peewee79!"
     try:
         response = requests.get(

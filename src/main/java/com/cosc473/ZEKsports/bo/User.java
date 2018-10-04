@@ -8,14 +8,16 @@ public class User {
 	private String userName;
 	private byte[] password;
 	private byte[] salt;
-
-	public User(String userName, byte[] password, byte[] salt) {
+	private String teamSubscription;
+	
+	public User() {}
+	
+	public User(String userName, byte[] password, byte[] salt, String teamSubscription) {
+		super();
 		this.userName = userName;
 		this.password = password;
 		this.salt = salt;
-	}
-
-	public User() {
+		this.teamSubscription = teamSubscription;
 	}
 
 	public String getUserName() {
@@ -37,5 +39,19 @@ public class User {
 	public byte[] getSalt() {
 		return salt;
 	}
+
+	public void setSalt(byte[] salt) {
+		this.salt = salt;
+	}
+
+	public String getTeamSubscription() {
+		return teamSubscription;
+	}
+
+	public void setTeamSubscription(String teamSubscription) {
+		this.teamSubscription = teamSubscription;
+	}
+
+	
 
 }
