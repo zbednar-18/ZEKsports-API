@@ -121,6 +121,45 @@ Example Response
     "totalTwoPointConversions" : "0"
 },
 ```
+### /nfl/teams/{teamName}
+###  method = GET
+return all teams in the current NFL season
+
+example call: /nfl/teams/Jaguars
+
+```
+Example Response
+{
+    "_id" : ObjectId("5bb1675ad1124d2b08528db2"),
+    "teamName" : "Jaguars",
+    "teamCity" : "Jacksonville",
+    "teamRank" : 10,
+    "gamesPlayed" : "3",
+    "passAttempts" : "112",
+    "passCompletions" : "68",
+    "passCompletionsPct" : "60.7",
+    "grossPassYards" : "718",
+    "netPassYards" : "700",
+    "passAverageYards" : "6.4",
+    "passYardsPerAttempt" : "6.0",
+    "passTouchdowns" : "5",
+    "passInterceptions" : "2",
+    "rushAttempts" : "71",
+    "rushYards" : "328",
+    "rushAverageYards" : "4.6",
+    "fumbles" : "0",
+    "recTouchdowns" : "5",
+    "sacks" : "7",
+    "tackles" : "178",
+    "safeties" : "0",
+    "interceptions" : "1",
+    "penalties" : "24",
+    "offenseYards" : "1032",
+    "totalTouchDowns" : "5",
+    "totalTwoPointConversions" : "0"
+},
+```
+
 
 ### /nfl/teams/{team}/players
 ###  method = GET
