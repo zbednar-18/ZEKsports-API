@@ -30,6 +30,7 @@ public class UserController {
 			userRepository.save(new User(payload.get("userName"), securePassword, salt, payload.get("teamSubscription")));
 			return payload.get("userName");
 		}
+		System.out.println("Username already exists");
 		return "username already exists";
 	}
 
