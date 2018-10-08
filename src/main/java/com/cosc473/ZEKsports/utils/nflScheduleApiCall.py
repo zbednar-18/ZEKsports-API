@@ -23,6 +23,8 @@ client = pymongo.MongoClient('mongodb+srv://KyleWilsonJPNV:Peewee79!@zeksports-g
 content = json.loads(send_request().content)
 mydb = client['ZEKsports']
 collection = mydb['NFLSchedule']
+collection.drop()
+
 
 for data in content['fullgameschedule']['gameentry']:
     dictionary = {
