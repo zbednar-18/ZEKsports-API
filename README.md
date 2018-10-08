@@ -185,7 +185,7 @@ Example Response
 ## Players
 ### /nfl/players
 return all players in the current NFL season
- example call: /nfl/players
+example call: /nfl/players
  ```
 Example Response
 {
@@ -232,5 +232,54 @@ Example Response
     "dateOfBirth" : "1992-09-05",
     "isRookie" : "false",
     "team" : "Rams"
+}
+```
+
+## Tweets
+
+### /nfl/tweets
+return all tweets currently stored in db
+example call: /nfl/tweets
+
+```
+Example Response
+{
+    "createdOn" : "Mon Oct 08 23:20:11 +0000 2018",
+    "text" : "This is another test tweet 5 #ZEKsports",
+    "screenName" : "JPNVKW",
+    "name" : "KWils"
+},
+{
+    "createdOn" : "Mon Oct 08 23:20:03 +0000 2018",
+    "text" : "This is another test tweet 4 #ZEKsports",
+    "screenName" : "JPNVKW",
+    "name" : "KWils"
+}
+
+```
+
+### /nfl/tweets/{number}
+return the {number} of most recent tweets
+
+example call: /nfl/tweets/3
+
+```
+{
+    "createdOn" : "Mon Oct 08 23:20:11 +0000 2018",
+    "text" : "This is another test tweet 5 #ZEKsports",
+    "screenName" : "JPNVKW",
+    "name" : "KWils"
+},
+{
+    "createdOn" : "Mon Oct 08 23:20:03 +0000 2018",
+    "text" : "This is another test tweet 4 #ZEKsports",
+    "screenName" : "JPNVKW",
+    "name" : "KWils"
+},
+{
+    "createdOn" : "Mon Oct 08 23:19:56 +0000 2018",
+    "text" : "This is another test tweet 3 #ZEKsports",
+    "screenName" : "JPNVKW",
+    "name" : "KWils"
 }
 ```
