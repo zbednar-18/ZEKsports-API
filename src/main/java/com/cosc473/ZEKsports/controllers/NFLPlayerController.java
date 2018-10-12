@@ -29,6 +29,7 @@ public class NFLPlayerController {
 	public NFLPlayer findNFLPlayerByName(@PathVariable("firstName") String firstName,
 			@PathVariable("lastName") String lastName) {
 		return null;
+		//return NFLPlayerRepository.findByfirstNameAndlastName(firstName, lastName);
 	}
 
 	@RequestMapping(value = "/players/positions/{position}")

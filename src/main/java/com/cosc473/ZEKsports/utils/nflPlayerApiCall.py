@@ -3,6 +3,7 @@ import requests
 import json
 import pymongo
 
+
 def send_request():
     # Request
     api_key = "46dacc81-c83f-4fec-97ed-7c45f7"
@@ -12,14 +13,16 @@ def send_request():
         response = requests.get(
             url=pull,
             headers={
-                "Authorization": "Basic " + base64.b64encode('{}:{}'.format(api_key,password).encode('utf-8')).decode('ascii')
+                "Authorization": "Basic " + base64.b64encode('{}:{}'.format(api_key, password).encode('utf-8')).decode('ascii')
             }
         )
         return response
     except requests.exceptions.RequestException:
         print('HTTP Request failed')
 
-client = pymongo.MongoClient('mongodb+srv://KyleWilsonJPNV:Peewee79!@zeksports-gckht.mongodb.net/test?retryWrites=true')
+
+client = pymongo.MongoClient(
+    'mongodb+srv://KyleWilsonJPNV:Peewee79!@zeksports-gckht.mongodb.net/test?retryWrites=true')
 content = json.loads(send_request().content)
 mydb = client['ZEKsports']
 collection = mydb['NFLPlayer']
@@ -59,4 +62,3 @@ for data in content['rosterplayers']['playerentry']:
         "team": team
     }
     collection.insert_one(dictionary)
-

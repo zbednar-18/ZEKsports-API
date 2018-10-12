@@ -6,6 +6,8 @@ import com.cosc473.ZEKsports.bo.User;
 import com.cosc473.ZEKsports.repositories.UserRepository;
 import com.cosc473.ZEKsports.utils.Password;
 
+import ch.qos.logback.core.net.SyslogOutputStream;
+
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,18 +17,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @RestController
-@CrossOrigin
+@CrossOrigin()
 @RequestMapping(value = "/user")
 public class UserController {
 
 	@Autowired
 	private UserRepository userRepository;
 
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	@RequestMapping(value = "/register")
 	public String createUser(@RequestBody Map<String, String> payload) {
 		if (userRepository.findByuserName(payload.get("userName")) == null) {
 			byte[] salt = Password.getNextSalt();
-			byte[] securePassword = Password.hash(payload.get("userName").toCharArray(), salt);
+			byte[] securePassword = Password.hash(payload.get("password").toCharArray(), salt);
 			userRepository.save(new User(payload.get("userName"), securePassword, salt, payload.get("teamSubscription")));
 			return payload.get("userName");
 		}
@@ -34,12 +36,22 @@ public class UserController {
 		return "username already exists";
 	}
 
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = "/login")
 	public User loginUser(@RequestBody Map<String, String> payload) {
-		User user = userRepository.findByuserName(payload.get("userName"));
-		if (Password.isExpectedPassword(payload.get("password").toCharArray(), user.getSalt(), user.getPassword())) {
+		User user = null;
+		try {
+		user = userRepository.findByuserName(payload.get("userName"));
+		} catch(Exception e) {
+			throw e;
+		}
+		char[] passwordArray = (payload.get("password").toCharArray());
+		byte[] salt = user.getSalt();
+		byte[] password = user.getPassword();
+		if (Password.isExpectedPassword(passwordArray, salt, password)) {
+			System.out.println("logged in");
 			return user;
 		}
+		System.out.println("not logged in");
 		return null;
 	}
 }
