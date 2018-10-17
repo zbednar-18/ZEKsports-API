@@ -5,9 +5,11 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "NFLTeam")
 public class NFLTeam {
 
+	private String division;
 	private String teamName;
 	private String teamCity;
-	private String teamRank;
+	private int overallTeamRank;
+	private String divisionTeamRank;
 	private String gamesPlayed;
 	private String passAttempts;
 	private String passCompletions;
@@ -35,16 +37,18 @@ public class NFLTeam {
 	public NFLTeam() {
 	}
 
-	public NFLTeam(String teamName, String teamCity, String teamRank, String gamesPlayed, String passAttempts,
-			String passCompletions, String passCompletionsPct, String grossPassYards, String netPassYards,
-			String passAverageYards, String passYardsPerAttempt, String passTouchdowns, String passInterceptions,
-			String rushAttempts, String rushYards, String rushAverageYards, String fumbles, String recTouchdowns,
-			String sacks, String tackles, String safeties, String interceptions, String penalties, String offenseYards,
-			String totalTouchDowns, String totalTwoPointConversions) {
-		
+	public NFLTeam(String division, String teamName, String teamCity, int overallTeamRank, String divisionTeamRank,
+			String gamesPlayed, String passAttempts, String passCompletions, String passCompletionsPct,
+			String grossPassYards, String netPassYards, String passAverageYards, String passYardsPerAttempt,
+			String passTouchdowns, String passInterceptions, String rushAttempts, String rushYards,
+			String rushAverageYards, String fumbles, String recTouchdowns, String sacks, String tackles,
+			String safeties, String interceptions, String penalties, String offenseYards, String totalTouchDowns,
+			String totalTwoPointConversions) {
+		this.division = division;
 		this.teamName = teamName;
 		this.teamCity = teamCity;
-		this.teamRank = teamRank;
+		this.overallTeamRank = overallTeamRank;
+		this.divisionTeamRank = divisionTeamRank;
 		this.gamesPlayed = gamesPlayed;
 		this.passAttempts = passAttempts;
 		this.passCompletions = passCompletions;
@@ -70,6 +74,14 @@ public class NFLTeam {
 		this.totalTwoPointConversions = totalTwoPointConversions;
 	}
 
+	public String getDivision() {
+		return division;
+	}
+
+	public void setDivision(String division) {
+		this.division = division;
+	}
+
 	public String getTeamName() {
 		return teamName;
 	}
@@ -86,12 +98,20 @@ public class NFLTeam {
 		this.teamCity = teamCity;
 	}
 
-	public String getTeamRank() {
-		return teamRank;
+	public int getOverallTeamRank() {
+		return overallTeamRank;
 	}
 
-	public void setTeamRank(String teamRank) {
-		this.teamRank = teamRank;
+	public void setOverallTeamRank(int overallTeamRank) {
+		this.overallTeamRank = overallTeamRank;
+	}
+
+	public String getDivisionTeamRank() {
+		return divisionTeamRank;
+	}
+
+	public void setDivisionTeamRank(String divisionTeamRank) {
+		this.divisionTeamRank = divisionTeamRank;
 	}
 
 	public String getGamesPlayed() {

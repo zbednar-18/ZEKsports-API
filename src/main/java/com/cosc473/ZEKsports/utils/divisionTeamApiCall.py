@@ -79,7 +79,7 @@ for team in overallTeamContent['overallteamstandings']['teamstandingsentry']:
     )
 
 for teamEntry in content['divisionteamstandings']['division']:
-    division = teamEntry['@name']
+    division = teamEntry['@name'][4:]
     for team in teamEntry['teamentry']:
         teamName = team['team']['Name']
         overallRank = getOverallRank(teamName)
@@ -120,6 +120,7 @@ quickSort(teamList, 0, len(teamList) - 1)
 if(teamList):
     collection.drop()
     for team in teamList:
+        print(team)
         collection.insert_one(team)
 else:
     print('Something went wrong, teamList is empty')
