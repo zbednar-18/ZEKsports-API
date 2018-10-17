@@ -10,6 +10,6 @@ import com.cosc473.ZEKsports.bo.NFLTeam;
 @Repository
 public interface NFLTeamRepository extends MongoRepository<NFLTeam, String> {
 
-	public List<NFLTeam> findByteamRank(int teamRank);
 	public List<NFLTeam> findByteamName(String teamName);
+	public List<NFLTeam> findByoverallTeamRank(int overallTeamRank);
 }

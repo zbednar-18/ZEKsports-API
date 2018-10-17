@@ -41,8 +41,8 @@ public class NFLTeamController {
 		return NFLPlayerRepository.findByteam(team);
 	}
 
-	@RequestMapping(value = "/teams/ranks/{teamRank}", method = RequestMethod.GET)
-	public List<NFLTeam> findNFLTeamByRank(@PathVariable("teamRank") int teamRank) {
-		return NFLTeamRepository.findByteamRank(teamRank);
+	@RequestMapping(value = "/teams/ranks/{overallTeamRank}", method = RequestMethod.GET)
+	public List<NFLTeam> findNFLTeamByRank(@PathVariable("overallTeamRank") int overallTeamRank) {
+		return NFLTeamRepository.findByoverallTeamRank(overallTeamRank);
 	}
 }
