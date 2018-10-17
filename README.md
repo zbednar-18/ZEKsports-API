@@ -91,33 +91,34 @@ example call: /nfl/teams
 
 ```
 Example Response
-{
-    "_id" : ObjectId("5bb1675ad1124d2b08528db2"),
-    "teamName" : "Jaguars",
-    "teamCity" : "Jacksonville",
-    "teamRank" : 10,
-    "gamesPlayed" : "3",
-    "passAttempts" : "112",
-    "passCompletions" : "68",
-    "passCompletionsPct" : "60.7",
-    "grossPassYards" : "718",
-    "netPassYards" : "700",
-    "passAverageYards" : "6.4",
-    "passYardsPerAttempt" : "6.0",
-    "passTouchdowns" : "5",
-    "passInterceptions" : "2",
-    "rushAttempts" : "71",
-    "rushYards" : "328",
-    "rushAverageYards" : "4.6",
-    "fumbles" : "0",
-    "recTouchdowns" : "5",
+ {
+    "division" : "AFC East",
+    "teamName" : "Patriots",
+    "teamCity" : "New England",
+    "overallTeamRank" : 5,
+    "divisionTeamRank" : "1",
+    "gamesPlayed" : "6",
+    "passAttempts" : "214",
+    "passCompletions" : "145",
+    "passCompletionsPct" : "67.8",
+    "grossPassYards" : "1600",
+    "netPassYards" : "1548",
+    "passAverageYards" : "7.5",
+    "passYardsPerAttempt" : "7.0",
+    "passTouchdowns" : "13",
+    "passInterceptions" : "6",
+    "rushAttempts" : "174",
+    "rushYards" : "731",
+    "rushAverageYards" : "4.2",
+    "fumbles" : "1",
+    "recTouchdowns" : "13",
     "sacks" : "7",
-    "tackles" : "178",
+    "tackles" : "391",
     "safeties" : "0",
-    "interceptions" : "1",
+    "interceptions" : "8",
     "penalties" : "24",
-    "offenseYards" : "1032",
-    "totalTouchDowns" : "5",
+    "offenseYards" : "2303",
+    "totalTouchDowns" : "20",
     "totalTwoPointConversions" : "0"
 },
 ```
@@ -125,37 +126,38 @@ Example Response
 ###  method = GET
 return all teams in the current NFL season
 
-example call: /nfl/teams/Jaguars
+example call: /nfl/teams/Bengals
 
 ```
 Example Response
 {
-    "_id" : ObjectId("5bb1675ad1124d2b08528db2"),
-    "teamName" : "Jaguars",
-    "teamCity" : "Jacksonville",
-    "teamRank" : 10,
-    "gamesPlayed" : "3",
-    "passAttempts" : "112",
-    "passCompletions" : "68",
-    "passCompletionsPct" : "60.7",
-    "grossPassYards" : "718",
-    "netPassYards" : "700",
-    "passAverageYards" : "6.4",
-    "passYardsPerAttempt" : "6.0",
-    "passTouchdowns" : "5",
-    "passInterceptions" : "2",
-    "rushAttempts" : "71",
-    "rushYards" : "328",
-    "rushAverageYards" : "4.6",
+    "division" : "AFC North",
+    "teamName" : "Bengals",
+    "teamCity" : "Cincinnati",
+    "overallTeamRank" : 4,
+    "divisionTeamRank" : "1",
+    "gamesPlayed" : "6",
+    "passAttempts" : "229",
+    "passCompletions" : "149",
+    "passCompletionsPct" : "65.1",
+    "grossPassYards" : "1674",
+    "netPassYards" : "1574",
+    "passAverageYards" : "7.3",
+    "passYardsPerAttempt" : "6.5",
+    "passTouchdowns" : "14",
+    "passInterceptions" : "7",
+    "rushAttempts" : "123",
+    "rushYards" : "539",
+    "rushAverageYards" : "4.4",
     "fumbles" : "0",
-    "recTouchdowns" : "5",
-    "sacks" : "7",
-    "tackles" : "178",
+    "recTouchdowns" : "14",
+    "sacks" : "13",
+    "tackles" : "407",
     "safeties" : "0",
-    "interceptions" : "1",
-    "penalties" : "24",
-    "offenseYards" : "1032",
-    "totalTouchDowns" : "5",
+    "interceptions" : "5",
+    "penalties" : "36",
+    "offenseYards" : "2115",
+    "totalTouchDowns" : "21",
     "totalTwoPointConversions" : "0"
 },
 ```
@@ -165,20 +167,20 @@ Example Response
 ###  method = GET
 return all players who belong to the team queried for the current season
 
-example call: /nfl/player/team/Bears
+example call: /nfl/teams/Giants/players
 
 ```
 Example Response
 {
-    "firstName" : "Sam",
-    "lastName" : "Acho",
-    "jerseyNumber" : "49",
-    "position" : "OLB",
-    "height" : "6'3\"",
-    "weight" : "257",
-    "dateOfBirth" : "1988-09-06",
+    "firstName" : "Jerell",
+    "lastName" : "Adams",
+    "jerseyNumber" : "89",
+    "position" : "TE",
+    "height" : "6'5\"",
+    "weight" : "247",
+    "dateOfBirth" : "1992-12-31",
     "isRookie" : "false",
-    "team" : "Bears"
+    "team" : "Giants"
 },
 ```
 
