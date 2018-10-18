@@ -6,15 +6,12 @@ import com.cosc473.ZEKsports.bo.User;
 import com.cosc473.ZEKsports.repositories.UserRepository;
 import com.cosc473.ZEKsports.utils.Password;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
-
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @RestController
 @CrossOrigin()

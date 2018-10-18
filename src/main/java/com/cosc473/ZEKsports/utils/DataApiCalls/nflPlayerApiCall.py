@@ -26,8 +26,7 @@ client = pymongo.MongoClient(
 content = json.loads(send_request().content)
 mydb = client['ZEKsports']
 collection = mydb['NFLPlayer']
-collection.drop()
-
+playerList = []
 
 for data in content['rosterplayers']['playerentry']:
     height = ""
@@ -61,4 +60,11 @@ for data in content['rosterplayers']['playerentry']:
         "isRookie": isRookie,
         "team": team
     }
-    collection.insert_one(dictionary)
+    playerList.append(dictionary)
+
+if(playerList):
+    collection.drop()
+    for player in playerList:
+        collection.insert_one(player)
+else:
+    print('playerList is empty')
