@@ -1,19 +1,15 @@
 package com.cosc473.ZEKsports.controllers;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cosc473.ZEKsports.bo.NFLSchedule;
-import com.cosc473.ZEKsports.repositories.NFLScheduleRepository;
+import com.cosc473.ZEKsports.services.NFLScheduleService;
 
 @RestController
 @CrossOrigin
@@ -21,45 +17,42 @@ import com.cosc473.ZEKsports.repositories.NFLScheduleRepository;
 public class NFLScheduleController {
 
 	@Autowired
-	private NFLScheduleRepository NFLScheduleRepository;
+	private NFLScheduleService NFLScheduleService;
 
 	@RequestMapping(value = "/schedules", method = RequestMethod.GET)
-	public List<NFLSchedule> findAllGames() {
-		return NFLScheduleRepository.findAll();
+	public ResponseEntity<?> findAllGames() {
+		return ResponseEntity.ok(NFLScheduleService.findAllGames());
 	}
 
 	@RequestMapping(value = "/schedules/weeks/{week}", method = RequestMethod.GET)
-	public List<NFLSchedule> findGamesByWeek(@PathVariable("week") String week) {
-		return NFLScheduleRepository.findByweek(week);
-	}
-	
-	@RequestMapping(value = "/schedules/weeks/current", method = RequestMethod.GET)
-	public String findCurrentWeek(){
-		Date date = new Date();
-		SimpleDateFormat ft = new SimpleDateFormat ("yyyy-MM-dd");
-		List<NFLSchedule> list = NFLScheduleRepository.findBydate(ft.format(date));
-		Calendar c;
-		while (list.isEmpty()){
-			c = Calendar.getInstance(); 
-			c.setTime(date); 
-			c.add(Calendar.DATE, 1);
-			date = c.getTime();
-			list = NFLScheduleRepository.findBydate(ft.format(date));
+	public ResponseEntity<?> findGamesByWeek(@PathVariable("week") String week) {
+		try {
+			return ResponseEntity.ok(NFLScheduleService.findGamesByWeek(week));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
 		}
-		return list.get(0).getWeek();
+	}
+
+	@RequestMapping(value = "/schedules/weeks/current", method = RequestMethod.GET)
+	public String findCurrentWeek() {
+		return NFLScheduleService.getCurrentWeek();
 	}
 
 	@RequestMapping(value = "/schedules/dates/{date}", method = RequestMethod.GET)
-	public List<NFLSchedule> findGamesByDate(@PathVariable("date") String date) {
-		return NFLScheduleRepository.findBydate(date);
-	}
-	
-	@RequestMapping(value = "/schedules/teams/{team}", method = RequestMethod.GET)
-	public List<NFLSchedule> findGamesByTeam(@PathVariable("team") String team) {
-		List<NFLSchedule> awayTeams = NFLScheduleRepository.findByawayteam(team);
-		List<NFLSchedule> homeTeams = NFLScheduleRepository.findByhometeam(team);
-		homeTeams.addAll(awayTeams);
-		return homeTeams;
+	public ResponseEntity<?> findGamesByDate(@PathVariable("date") String date) {
+		try {
+			return ResponseEntity.ok(NFLScheduleService.findGamesByDate(date));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+		}
 	}
 
+	@RequestMapping(value = "/schedules/teams/{team}", method = RequestMethod.GET)
+	public ResponseEntity<?> findGamesByTeam(@PathVariable("team") String team) {
+		try {
+			return ResponseEntity.ok(NFLScheduleService.findGamesByTeam(team));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+		}
+	}
 }
