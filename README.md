@@ -285,3 +285,19 @@ example call: /nfl/tweets/3
     "name" : "KWils"
 }
 ```
+
+## Bugs
+
+### Create a bug
+POST to /bug
+Upon successful resource creation, appropriate status code with body of "Bug Created" is returned.
+
+```
+Example Call
+POST with values:
+
+{
+	"bugReporter": "testing33",
+	"description": "testing3"
+}
+```
