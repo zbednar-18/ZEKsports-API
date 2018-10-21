@@ -1,19 +1,15 @@
 package com.cosc473.ZEKsports.controllers;
 
-import com.cosc473.ZEKsports.repositories.NFLTeamRepository;
-import com.cosc473.ZEKsports.repositories.NFLPlayerRepository;
-
-import java.util.List;
+import com.cosc473.ZEKsports.services.NFLTeamService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.cosc473.ZEKsports.bo.NFLPlayer;
-import com.cosc473.ZEKsports.bo.NFLTeam;
 
 @CrossOrigin
 @RestController
@@ -21,28 +17,37 @@ import com.cosc473.ZEKsports.bo.NFLTeam;
 public class NFLTeamController {
 
 	@Autowired
-	private NFLTeamRepository NFLTeamRepository;
-
-	@Autowired
-	private NFLPlayerRepository NFLPlayerRepository;
+	private NFLTeamService nflTeamService;
 
 	@RequestMapping(value = "/teams", method = RequestMethod.GET)
-	public List<NFLTeam> getAllTeams() {
-		return NFLTeamRepository.findAll();
+	public ResponseEntity<?> getAllTeams() {
+		return ResponseEntity.status(HttpStatus.OK).body(nflTeamService.getAllTeams());
 	}
-	
+
 	@RequestMapping(value = "/teams/{teamName}")
-	public List<NFLTeam> findNFLTeamByName(@PathVariable("teamName") String teamName){
-		return NFLTeamRepository.findByteamName(teamName);
+	public ResponseEntity<?> findNFLTeamByName(@PathVariable("teamName") String teamName) {
+		try {
+			return ResponseEntity.ok(nflTeamService.findNFLTeamByName(teamName));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+		}
 	}
 
 	@RequestMapping(value = "/teams/{team}/players", method = RequestMethod.GET)
-	public List<NFLPlayer> findNFLPlayersByTeam(@PathVariable("team") String team) {
-		return NFLPlayerRepository.findByteam(team);
+	public ResponseEntity<?> findNFLPlayersByTeam(@PathVariable("team") String team) {
+		try {
+			return ResponseEntity.ok(nflTeamService.findNFLPlayersByTeam(team));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+		}
 	}
 
 	@RequestMapping(value = "/teams/ranks/{overallTeamRank}", method = RequestMethod.GET)
-	public List<NFLTeam> findNFLTeamByRank(@PathVariable("overallTeamRank") int overallTeamRank) {
-		return NFLTeamRepository.findByoverallTeamRank(overallTeamRank);
+	public ResponseEntity<?> findNFLTeamByRank(@PathVariable("overallTeamRank") int overallTeamRank) {
+		try {
+			return ResponseEntity.ok(nflTeamService.findNFLTeamByRank(overallTeamRank));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+		}
 	}
 }
