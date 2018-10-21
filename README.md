@@ -9,7 +9,6 @@ Back-end API for our COSC 473 website.
 
 ### /nfl/schedules
 ### method = GET
-
 returns schedule for the entire season for all teams
 
 ```
@@ -28,8 +27,6 @@ Example Response
 ### /nfl/schedules/dates/{date} 
 ###  method = GET
 return games that are scheduled on that date
-date must be formatted in yyyy-mm-dd
-
 example call: /nfl/schedulse/dates/2018-09-23
 
 ```
@@ -48,7 +45,6 @@ Example Response
 ### /nfl/schedules/teams/{team}
 ###  method = GET
 return all games for a team for an entire season
-
 example call: /nfl/schedules/teams/Steelers
 
 ```
@@ -66,7 +62,6 @@ Example Response
 ### /nfl/schedules/weeks/{week}
 ###  method = GET
 return all games for a given week of the nfl season
-
 example call: /nfl/schedules/weeks/2
 
 ```
@@ -86,7 +81,6 @@ Example Response
 ### /nfl/teams
 ###  method = GET
 return all teams in the current NFL season
-
 example call: /nfl/teams
 
 ```
@@ -122,10 +116,10 @@ Example Response
     "totalTwoPointConversions" : "0"
 },
 ```
+
 ### /nfl/teams/{teamName}
 ###  method = GET
 return all teams in the current NFL season
-
 example call: /nfl/teams/Bengals
 
 ```
@@ -162,11 +156,9 @@ Example Response
 },
 ```
 
-
 ### /nfl/teams/{team}/players
 ###  method = GET
 return all players who belong to the team queried for the current season
-
 example call: /nfl/teams/Giants/players
 
 ```
@@ -186,8 +178,10 @@ Example Response
 
 ## Players
 ### /nfl/players
+### METHOD = GET
 return all players in the current NFL season
 example call: /nfl/players
+
  ```
 Example Response
 {
@@ -202,10 +196,13 @@ Example Response
     "team" : "Bears"
 }
 ```
+
  ### /nfl/players/teams/{team}
-return all players who belong to the team queried for the current season
+ ### METHOD = GET
+ return all players who belong to the team queried for the current season
  example call: /nfl/players/teams/Bears
- ```
+ 
+```
 Example Response
 {
     "firstName" : "Sam",
@@ -219,10 +216,13 @@ Example Response
     "team" : "Bears"
 }
 ```
+
  ### /nfl/players/positions/{position}
-return all players who belong to the team queried for the current season
+ ### METHOD = GET
+ return all players who belong to the team queried for the current season
  example call: /nfl/players/positions/QB
- ```
+ 
+```
 Example Response
 {
     "firstName" : "Brandon",
@@ -240,6 +240,7 @@ Example Response
 ## Tweets
 
 ### /nfl/tweets
+### METHOD = GET
 return all tweets currently stored in db
 example call: /nfl/tweets
 
@@ -261,8 +262,8 @@ Example Response
 ```
 
 ### /nfl/tweets/{number}
+### METHOD = GET
 return the {number} of most recent tweets
-
 example call: /nfl/tweets/3
 
 ```
@@ -289,15 +290,6 @@ example call: /nfl/tweets/3
 ## Bugs
 
 ### Create a bug
-POST to /bug
+### METHOD = POST
+example call: /bug
 Upon successful resource creation, appropriate status code with body of "Bug Created" is returned.
-
-```
-Example Call
-POST with values:
-
-{
-	"bugReporter": "testing33",
-	"description": "testing3"
-}
-```
