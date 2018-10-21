@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 @CrossOrigin()
@@ -22,6 +23,7 @@ public class UserController {
 	private UserRepository userRepository;
 
 	@RequestMapping(value = "/register")
+	@ResponseBody
 	public String createUser(@RequestBody Map<String, String> payload) {
 		if (userRepository.findByuserName(payload.get("userName")) == null) {
 			byte[] salt = Password.getNextSalt();
@@ -34,6 +36,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/login")
+	@ResponseBody
 	public User loginUser(@RequestBody Map<String, String> payload) {
 		User user = null;
 		try {
