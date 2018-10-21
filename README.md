@@ -293,3 +293,20 @@ example call: /nfl/tweets/3
 ### METHOD = POST
 example call: /bug
 Upon successful resource creation, appropriate status code with body of "Bug Created" is returned.
+
+```
+These fields are required for the post request
+{
+    "bugReporter" : "testing",
+    "description" : "testing",
+}
+```
+
+```
+Example Bug Object
+{
+    "bugReporter" : "testing",
+    "description" : "testing",
+    "dateReported" : "2018/10/21 00:46:44",
+}
+```
