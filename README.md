@@ -1,5 +1,5 @@
 # ZEKsports-API
-Back-end API for our COSC 473 website.
+Back-end API for our COSC 473 website that fetches and manipulates data stored in our cloud database.
 
 
 
