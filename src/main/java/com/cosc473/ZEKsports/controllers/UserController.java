@@ -37,12 +37,12 @@ public class UserController {
 	@RequestMapping(value = "/login")
 	@ResponseBody
 	public ResponseEntity<?> loginUser(@RequestBody Map<String, String> payload) {
-		User user = null;
+		Map<String, String> returnLoad = null;
 		try {
-			user = userService.loginUser(payload);
+			returnLoad = userService.loginUser(payload);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
-		return ResponseEntity.status(HttpStatus.OK).body(user.getTeamSubscription());
+		return ResponseEntity.status(HttpStatus.OK).body(returnLoad);
 	}
 }
