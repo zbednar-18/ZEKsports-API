@@ -1,5 +1,6 @@
 package com.cosc473.ZEKsports.services;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,9 @@ public class UserService {
 		return user.getUserName();
 	}
 
-	public User loginUser(Map<String, String> payload) throws Exception {
+	public HashMap<String, String> loginUser(Map<String, String> payload) throws Exception {
 		User user = userRepository.findByuserName(payload.get("userName"));
+		HashMap<String, String> returnLoad = new HashMap<String, String>();
 		if (user == null) {
 			throw new Exception("Username/Password Combination does not exist");
 		}
@@ -36,7 +38,9 @@ public class UserService {
 		byte[] salt = user.getSalt();
 		byte[] password = user.getPassword();
 		if (Password.isExpectedPassword(passwordArray, salt, password)) {
-			return user;
+			returnLoad.put("userName", user.getUserName());
+			returnLoad.put("teamSubscription", user.getTeamSubscription());
+			return returnLoad;
 		}
 		throw new Exception("Username/Password Combination does not exist");
 	}

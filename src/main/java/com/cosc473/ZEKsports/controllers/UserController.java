@@ -29,7 +29,7 @@ public class UserController {
 		try {
 			userName = userService.createUser(payload);
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.CONFLICT).body(e.getMessage());
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
 		}
 		return ResponseEntity.status(HttpStatus.CREATED).body(userName);
 	}
