@@ -79,11 +79,13 @@ for team in overallTeamContent['overallteamstandings']['teamstandingsentry']:
     )
 
 for teamEntry in content['divisionteamstandings']['division']:
-    division = teamEntry['@name'][4:]
+    conference = teamEntry['@name'][4:7]
+    division = teamEntry['@name'][8:]
     for team in teamEntry['teamentry']:
         teamName = team['team']['Name']
         overallRank = getOverallRank(teamName)
         dictionary = {
+            'conference': conference,
             'division': division,
             'teamName': teamName,
             'teamCity': team['team']['City'],
