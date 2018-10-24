@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.cosc473.ZEKsports.bo.User;
 import com.cosc473.ZEKsports.services.UserService;
+
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,13 +27,13 @@ public class UserController {
 	@RequestMapping(value = "/register")
 	@ResponseBody
 	public ResponseEntity<?> createUser(@RequestBody Map<String, String> payload) {
-		String userName = "";
+		HashMap<String, String> returnLoad;
 		try {
-			userName = userService.createUser(payload);
+			returnLoad = userService.createUser(payload);
 		} catch (Exception e) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
 		}
-		return ResponseEntity.status(HttpStatus.CREATED).body(userName);
+		return ResponseEntity.status(HttpStatus.CREATED).body(returnLoad);
 	}
 
 	@RequestMapping(value = "/login")
