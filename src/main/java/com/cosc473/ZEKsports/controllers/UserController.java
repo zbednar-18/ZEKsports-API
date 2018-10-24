@@ -2,7 +2,6 @@ package com.cosc473.ZEKsports.controllers;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cosc473.ZEKsports.bo.User;
 import com.cosc473.ZEKsports.services.UserService;
 
 import java.util.HashMap;
