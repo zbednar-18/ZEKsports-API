@@ -118,7 +118,7 @@ Example Response
 ```
 
 ### /nfl/teams/{teamName}
-###  method = GET
+###  METHOD = GET
 return all teams in the current NFL season
 example call: /nfl/teams/Bengals
 
@@ -157,7 +157,7 @@ Example Response
 ```
 
 ### /nfl/teams/{team}/players
-###  method = GET
+###  METHOD = GET
 return all players who belong to the team queried for the current season
 example call: /nfl/teams/Giants/players
 
@@ -173,6 +173,44 @@ Example Response
     "dateOfBirth" : "1992-12-31",
     "isRookie" : "false",
     "team" : "Giants"
+},
+```
+
+### /teams/conference/{conference}/division/{division}
+### METHOD = GET
+example call: /teams/conference/AFC/division/North
+```
+Example Response
+{
+    "conference": "AFC",
+    "division" : "North",
+    "teamName" : "Bengals",
+    "teamCity" : "Cincinnati",
+    "overallTeamRank" : 4,
+    "divisionTeamRank" : "1",
+    "gamesPlayed" : "6",
+    "passAttempts" : "229",
+    "passCompletions" : "149",
+    "passCompletionsPct" : "65.1",
+    "grossPassYards" : "1674",
+    "netPassYards" : "1574",
+    "passAverageYards" : "7.3",
+    "passYardsPerAttempt" : "6.5",
+    "passTouchdowns" : "14",
+    "passInterceptions" : "7",
+    "rushAttempts" : "123",
+    "rushYards" : "539",
+    "rushAverageYards" : "4.4",
+    "fumbles" : "0",
+    "recTouchdowns" : "14",
+    "sacks" : "13",
+    "tackles" : "407",
+    "safeties" : "0",
+    "interceptions" : "5",
+    "penalties" : "36",
+    "offenseYards" : "2115",
+    "totalTouchDowns" : "21",
+    "totalTwoPointConversions" : "0"
 },
 ```
 
