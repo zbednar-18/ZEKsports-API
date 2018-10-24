@@ -50,4 +50,14 @@ public class NFLTeamController {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
 		}
 	}
+
+	@RequestMapping(value = "/teams/conference/{conference}/division/{division}", method = RequestMethod.GET)
+	public ResponseEntity<?> findNFLTeamByDivision(@PathVariable("conference") String conference,
+			@PathVariable("division") String division) {
+		try {
+			return ResponseEntity.ok(nflTeamService.findNFLTeamByDivision(conference, division));
+		} catch (Exception e) {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+		}
+	}
 }
