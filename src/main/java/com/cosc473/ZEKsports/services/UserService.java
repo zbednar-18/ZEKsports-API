@@ -16,8 +16,9 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
-	public String createUser(Map<String, String> payload) throws Exception {
+	public HashMap<String, String> createUser(Map<String, String> payload) throws Exception {
 		User user = userRepository.findByuserName(payload.get("userName"));
+		HashMap<String, String> returnLoad = new HashMap<String, String>();
 		if (user != null) {
 			throw new Exception("Username is already in use");
 		}
@@ -25,7 +26,8 @@ public class UserService {
 		byte[] securePassword = Password.hash(payload.get("password").toCharArray(), salt);
 		user = new User(payload.get("userName"), securePassword, salt, payload.get("teamSubscription"));
 		userRepository.insert(user);
-		return user.getUserName();
+		returnLoad.put("userName", user.getUserName());
+		return returnLoad;
 	}
 
 	public HashMap<String, String> loginUser(Map<String, String> payload) throws Exception {
