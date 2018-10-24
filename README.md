@@ -1,5 +1,5 @@
 # ZEKsports-API
-Back-end API for our COSC 473 website.
+Back-end API for our COSC 473 website that fetches and manipulates data stored in our cloud database.
 
 
 
@@ -9,7 +9,6 @@ Back-end API for our COSC 473 website.
 
 ### /nfl/schedules
 ### method = GET
-
 returns schedule for the entire season for all teams
 
 ```
@@ -28,8 +27,6 @@ Example Response
 ### /nfl/schedules/dates/{date} 
 ###  method = GET
 return games that are scheduled on that date
-date must be formatted in yyyy-mm-dd
-
 example call: /nfl/schedulse/dates/2018-09-23
 
 ```
@@ -48,7 +45,6 @@ Example Response
 ### /nfl/schedules/teams/{team}
 ###  method = GET
 return all games for a team for an entire season
-
 example call: /nfl/schedules/teams/Steelers
 
 ```
@@ -66,7 +62,6 @@ Example Response
 ### /nfl/schedules/weeks/{week}
 ###  method = GET
 return all games for a given week of the nfl season
-
 example call: /nfl/schedules/weeks/2
 
 ```
@@ -86,7 +81,6 @@ Example Response
 ### /nfl/teams
 ###  method = GET
 return all teams in the current NFL season
-
 example call: /nfl/teams
 
 ```
@@ -122,10 +116,10 @@ Example Response
     "totalTwoPointConversions" : "0"
 },
 ```
-### /nfl/teams/{teamName}
-###  method = GET
-return all teams in the current NFL season
 
+### /nfl/teams/{teamName}
+###  METHOD = GET
+return all teams in the current NFL season
 example call: /nfl/teams/Bengals
 
 ```
@@ -162,11 +156,9 @@ Example Response
 },
 ```
 
-
 ### /nfl/teams/{team}/players
-###  method = GET
+###  METHOD = GET
 return all players who belong to the team queried for the current season
-
 example call: /nfl/teams/Giants/players
 
 ```
@@ -184,10 +176,50 @@ Example Response
 },
 ```
 
+### /teams/conference/{conference}/division/{division}
+### METHOD = GET
+example call: /teams/conference/AFC/division/North
+```
+Example Response
+{
+    "conference": "AFC",
+    "division" : "North",
+    "teamName" : "Bengals",
+    "teamCity" : "Cincinnati",
+    "overallTeamRank" : 4,
+    "divisionTeamRank" : "1",
+    "gamesPlayed" : "6",
+    "passAttempts" : "229",
+    "passCompletions" : "149",
+    "passCompletionsPct" : "65.1",
+    "grossPassYards" : "1674",
+    "netPassYards" : "1574",
+    "passAverageYards" : "7.3",
+    "passYardsPerAttempt" : "6.5",
+    "passTouchdowns" : "14",
+    "passInterceptions" : "7",
+    "rushAttempts" : "123",
+    "rushYards" : "539",
+    "rushAverageYards" : "4.4",
+    "fumbles" : "0",
+    "recTouchdowns" : "14",
+    "sacks" : "13",
+    "tackles" : "407",
+    "safeties" : "0",
+    "interceptions" : "5",
+    "penalties" : "36",
+    "offenseYards" : "2115",
+    "totalTouchDowns" : "21",
+    "totalTwoPointConversions" : "0"
+},
+```
+
 ## Players
 ### /nfl/players
+### METHOD = GET
 return all players in the current NFL season
 example call: /nfl/players
+
  ```
 Example Response
 {
@@ -202,10 +234,13 @@ Example Response
     "team" : "Bears"
 }
 ```
+
  ### /nfl/players/teams/{team}
-return all players who belong to the team queried for the current season
+ ### METHOD = GET
+ return all players who belong to the team queried for the current season
  example call: /nfl/players/teams/Bears
- ```
+ 
+```
 Example Response
 {
     "firstName" : "Sam",
@@ -219,10 +254,13 @@ Example Response
     "team" : "Bears"
 }
 ```
+
  ### /nfl/players/positions/{position}
-return all players who belong to the team queried for the current season
+ ### METHOD = GET
+ return all players who belong to the team queried for the current season
  example call: /nfl/players/positions/QB
- ```
+ 
+```
 Example Response
 {
     "firstName" : "Brandon",
@@ -240,6 +278,7 @@ Example Response
 ## Tweets
 
 ### /nfl/tweets
+### METHOD = GET
 return all tweets currently stored in db
 example call: /nfl/tweets
 
@@ -261,8 +300,8 @@ Example Response
 ```
 
 ### /nfl/tweets/{number}
+### METHOD = GET
 return the {number} of most recent tweets
-
 example call: /nfl/tweets/3
 
 ```
@@ -283,5 +322,29 @@ example call: /nfl/tweets/3
     "text" : "This is another test tweet 3 #ZEKsports",
     "screenName" : "JPNVKW",
     "name" : "KWils"
+}
+```
+
+## Bugs
+
+### Create a bug
+### METHOD = POST
+example call: /bug
+Upon successful resource creation, appropriate status code with body of "Bug Created" is returned.
+
+```
+These fields are required for the post request
+{
+    "bugReporter" : "testing",
+    "description" : "testing",
+}
+```
+
+```
+Example Bug Object
+{
+    "bugReporter" : "testing",
+    "description" : "testing",
+    "dateReported" : "2018/10/21 00:46:44",
 }
 ```

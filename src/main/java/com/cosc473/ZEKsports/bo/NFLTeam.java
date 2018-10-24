@@ -5,6 +5,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "NFLTeam")
 public class NFLTeam {
 
+	private String conference;
 	private String division;
 	private String teamName;
 	private String teamCity;
@@ -37,13 +38,15 @@ public class NFLTeam {
 	public NFLTeam() {
 	}
 
-	public NFLTeam(String division, String teamName, String teamCity, int overallTeamRank, String divisionTeamRank,
-			String gamesPlayed, String passAttempts, String passCompletions, String passCompletionsPct,
-			String grossPassYards, String netPassYards, String passAverageYards, String passYardsPerAttempt,
-			String passTouchdowns, String passInterceptions, String rushAttempts, String rushYards,
-			String rushAverageYards, String fumbles, String recTouchdowns, String sacks, String tackles,
-			String safeties, String interceptions, String penalties, String offenseYards, String totalTouchDowns,
-			String totalTwoPointConversions) {
+	public NFLTeam(String conference, String division, String teamName, String teamCity, int overallTeamRank,
+			String divisionTeamRank, String gamesPlayed, String passAttempts, String passCompletions,
+			String passCompletionsPct, String grossPassYards, String netPassYards, String passAverageYards,
+			String passYardsPerAttempt, String passTouchdowns, String passInterceptions, String rushAttempts,
+			String rushYards, String rushAverageYards, String fumbles, String recTouchdowns, String sacks,
+			String tackles, String safeties, String interceptions, String penalties, String offenseYards,
+			String totalTouchDowns, String totalTwoPointConversions) {
+		super();
+		this.conference = conference;
 		this.division = division;
 		this.teamName = teamName;
 		this.teamCity = teamCity;
@@ -72,6 +75,14 @@ public class NFLTeam {
 		this.offenseYards = offenseYards;
 		this.totalTouchDowns = totalTouchDowns;
 		this.totalTwoPointConversions = totalTwoPointConversions;
+	}
+
+	public String getConference() {
+		return conference;
+	}
+
+	public void setConference(String conference) {
+		this.conference = conference;
 	}
 
 	public String getDivision() {
