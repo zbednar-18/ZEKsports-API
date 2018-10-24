@@ -49,8 +49,9 @@ public class NFLTeamService {
 	}
 
 	public List<NFLTeam> findNFLTeamByDivision(String conference, String division) throws Exception {
-		List<NFLTeam> list = NFLTeamRepository.findByconference(conference);
+		List<NFLTeam> list = NFLTeamRepository.findByconference(conference.toUpperCase());
 		List<NFLTeam> returnLoad = new ArrayList<NFLTeam>();
+		division = division.substring(0, 1).toUpperCase() + division.substring(1, division.length());
 		if (list.isEmpty()) {
 			throw new Exception("Conference not found");
 		}
