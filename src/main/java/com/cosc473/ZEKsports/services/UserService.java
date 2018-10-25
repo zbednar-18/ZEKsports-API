@@ -40,6 +40,7 @@ public class UserService {
 		emailService.createEmail(emailLoad);
 		return returnLoad;
 	}
+<<<<<<< HEAD
 
 	public HashMap<String, String> loginUser(Map<String, String> payload) throws Exception {
 		User user = userRepository.findByuserName(payload.get("userName"));
@@ -58,3 +59,22 @@ public class UserService {
 		throw new Exception("Username/Password Combination does not exist");
 	}
 }
+=======
+		public HashMap<String, String> loginUser(Map<String, String> payload) throws Exception {
+			User user = userRepository.findByuserName(payload.get("userName"));
+			HashMap<String, String> returnLoad = new HashMap<String, String>();
+			if (user == null) {
+				throw new Exception("Username/Password Combination does not exist");
+			}
+			char[] passwordArray = (payload.get("password").toCharArray());
+			byte[] salt = user.getSalt();
+			byte[] password = user.getPassword();
+			if (Password.isExpectedPassword(passwordArray, salt, password)) {
+				returnLoad.put("userName", user.getUserName());
+				returnLoad.put("teamSubscription", user.getTeamSubscription());
+				return returnLoad;
+			}
+			throw new Exception("Username/Password Combination does not exist");
+		}
+	}
+>>>>>>> ddf4e871cc629ae61afdcf2b98a8388cc152bbea
