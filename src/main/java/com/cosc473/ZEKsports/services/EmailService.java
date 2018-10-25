@@ -22,6 +22,7 @@ public class EmailService {
 	private String body = null;
 	private EmailSender emailSender;
 	private Email email;
+	private String dateSent;
 
 	public void createEmail(Map<String, String> payload) throws Exception {
 		
@@ -30,11 +31,10 @@ public class EmailService {
 		subject = payload.get("subject");
 		body = payload.get("body");
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-		String dateSent = dtf.format(LocalDateTime.now());
+		dateSent = dtf.format(LocalDateTime.now());
 
 		try {
-			email = new Email(toAddress, subject, body, dateSent);
-			emailSender.sendEmail(email);
+			emailSender.sendEmail(new Email(toAddress, subject, body, dateSent));
 		} catch (Exception e) {
 			throw new Exception("Unable to send email, bad request");
 		}

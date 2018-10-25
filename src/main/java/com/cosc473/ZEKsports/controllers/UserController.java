@@ -26,12 +26,12 @@ public class UserController {
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<?> createUser(@RequestBody Map<String, String> payload) {
+	public ResponseEntity<?> createUser(@RequestBody Map<String, String> payload) throws Exception {
 		HashMap<String, String> returnLoad;
 		try {
 			returnLoad = userService.createUser(payload);
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+			throw e;
 		}
 		return ResponseEntity.status(HttpStatus.CREATED).body(returnLoad);
 	}
