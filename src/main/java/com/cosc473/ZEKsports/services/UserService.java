@@ -24,7 +24,7 @@ public class UserService {
 		}
 		byte[] salt = Password.getNextSalt();
 		byte[] securePassword = Password.hash(payload.get("password").toCharArray(), salt);
-		user = new User(payload.get("userName"), securePassword, salt, payload.get("teamSubscription"));
+		user = new User(payload.get("userName"), securePassword, payload.get("email"), salt, payload.get("teamSubscription"));
 		userRepository.insert(user);
 		returnLoad.put("userName", user.getUserName());
 		return returnLoad;
