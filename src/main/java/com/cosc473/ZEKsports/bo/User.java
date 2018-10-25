@@ -7,17 +7,20 @@ public class User {
 
 	private String userName;
 	private byte[] password;
+	private String userEmail;
 	private byte[] salt;
 	private String teamSubscription;
-	
-	public User() {}
-	
-	public User(String userName, byte[] password, byte[] salt, String teamSubscription) {
+
+	public User(String userName, byte[] password, String userEmail, byte[] salt, String teamSubscription) {
 		super();
 		this.userName = userName;
 		this.password = password;
+		this.userEmail = userEmail;
 		this.salt = salt;
 		this.teamSubscription = teamSubscription;
+	}
+
+	public User() {
 	}
 
 	public String getUserName() {
@@ -36,6 +39,14 @@ public class User {
 		this.password = password;
 	}
 
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
+
 	public byte[] getSalt() {
 		return salt;
 	}
@@ -51,7 +62,5 @@ public class User {
 	public void setTeamSubscription(String teamSubscription) {
 		this.teamSubscription = teamSubscription;
 	}
-
-	
 
 }
