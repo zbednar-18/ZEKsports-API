@@ -16,9 +16,13 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 
+	@Autowired
+	private EmailService emailService;
+	
 	public HashMap<String, String> createUser(Map<String, String> payload) throws Exception {
 		User user = userRepository.findByuserName(payload.get("userName"));
 		HashMap<String, String> returnLoad = new HashMap<String, String>();
+		HashMap<String, String> emailLoad = new HashMap<String, String>();
 		if (user != null) {
 			throw new Exception("Username is already in use");
 		}
@@ -28,6 +32,12 @@ public class UserService {
 				payload.get("teamSubscription"));
 		userRepository.insert(user);
 		returnLoad.put("userName", user.getUserName());
+		emailLoad.put("toAddress", user.getUserEmail());
+		emailLoad.put("subject", "Welcome to ZEKsports");
+		emailLoad.put("body", "Hello " + user.getUserName() + "! \n\n "
+				+ "This email is to confirm your registration to ZEKsports.\n\n" 
+				+ "Best, \n\n The ZEKsports dev team");
+		emailService.createEmail(emailLoad);
 		return returnLoad;
 	}
 

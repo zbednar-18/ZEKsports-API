@@ -20,13 +20,12 @@ public class EmailService {
 	private String toAddress = null;
 	private String subject = null;
 	private String body = null;
-	private EmailSender emailSender;
 	private Email email;
 	private String dateSent;
 
 	public void createEmail(Map<String, String> payload) throws Exception {
 		
-		emailSender = new EmailSender();
+		EmailSender emailSender = new EmailSender();
 		toAddress = payload.get("toAddress");
 		subject = payload.get("subject");
 		body = payload.get("body");
@@ -34,7 +33,8 @@ public class EmailService {
 		dateSent = dtf.format(LocalDateTime.now());
 
 		try {
-			emailSender.sendEmail(new Email(toAddress, subject, body, dateSent));
+			email = new Email(toAddress, subject, body, dateSent);
+			emailSender.sendEmail(email);
 		} catch (Exception e) {
 			throw new Exception("Unable to send email, bad request");
 		}
