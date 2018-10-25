@@ -37,8 +37,7 @@ public class EmailSender {
 				MimeMessage message = new MimeMessage(session);
 				message.addRecipient(Message.RecipientType.TO, new InternetAddress(email.getToAddress()));
 				message.setSubject(email.getSubject());
-				message.setText(email.getBody());
-				System.out.println("above transport.send");
+				message.setContent(email.getBody(), "text/html; charset=utf-8");
 				Transport.send(message);
 			} catch (MessagingException e) {
 				throw new RuntimeException(e);

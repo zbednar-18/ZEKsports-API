@@ -34,13 +34,13 @@ public class UserService {
 		returnLoad.put("userName", user.getUserName());
 		emailLoad.put("toAddress", user.getUserEmail());
 		emailLoad.put("subject", "Welcome to ZEKsports");
-		emailLoad.put("body", "Hello " + user.getUserName() + "! \n\n "
-				+ "This email is to confirm your registration to ZEKsports.\n\n" 
-				+ "Best, \n\n The ZEKsports dev team");
+		emailLoad.put("body", "Hello " + user.getUserName() + "!\n\n"
+				+ "This email is to confirm your registration to ZEKsports.\n\n"
+				+ "<a href=abc.com>Click here to confirm your email address</a>\n\n" 
+				+ "Best, \n\nThe ZEKsports dev team");
 		emailService.createEmail(emailLoad);
 		return returnLoad;
 	}
-<<<<<<< HEAD
 
 	public HashMap<String, String> loginUser(Map<String, String> payload) throws Exception {
 		User user = userRepository.findByuserName(payload.get("userName"));
@@ -59,22 +59,3 @@ public class UserService {
 		throw new Exception("Username/Password Combination does not exist");
 	}
 }
-=======
-		public HashMap<String, String> loginUser(Map<String, String> payload) throws Exception {
-			User user = userRepository.findByuserName(payload.get("userName"));
-			HashMap<String, String> returnLoad = new HashMap<String, String>();
-			if (user == null) {
-				throw new Exception("Username/Password Combination does not exist");
-			}
-			char[] passwordArray = (payload.get("password").toCharArray());
-			byte[] salt = user.getSalt();
-			byte[] password = user.getPassword();
-			if (Password.isExpectedPassword(passwordArray, salt, password)) {
-				returnLoad.put("userName", user.getUserName());
-				returnLoad.put("teamSubscription", user.getTeamSubscription());
-				return returnLoad;
-			}
-			throw new Exception("Username/Password Combination does not exist");
-		}
-	}
->>>>>>> ddf4e871cc629ae61afdcf2b98a8388cc152bbea
