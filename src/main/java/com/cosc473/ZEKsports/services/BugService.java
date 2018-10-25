@@ -15,16 +15,17 @@ public class BugService {
 
 	@Autowired
 	private BugRepository bugRepository;
-	
+
 	public String createBug(Map<String, String> payload) {
 		String bugReporter = payload.get("bugReporter");
 		String description = payload.get("description");
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");   
+		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
 		String dateReported = dtf.format(LocalDateTime.now());
-		
-		if(bugReporter.equals("") || description.equals("")){
+
+		if (bugReporter.equals("") || description.equals("")) {
 			return "";
 		}
+
 		bugRepository.insert(new Bug(bugReporter, description, dateReported));
 		return "created";
 	}

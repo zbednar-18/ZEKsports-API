@@ -13,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
@@ -23,19 +24,19 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@RequestMapping(value = "/register")
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<?> createUser(@RequestBody Map<String, String> payload) {
+	public ResponseEntity<?> createUser(@RequestBody Map<String, String> payload) throws Exception {
 		HashMap<String, String> returnLoad;
 		try {
 			returnLoad = userService.createUser(payload);
 		} catch (Exception e) {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+			throw e;
 		}
 		return ResponseEntity.status(HttpStatus.CREATED).body(returnLoad);
 	}
 
-	@RequestMapping(value = "/login")
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<?> loginUser(@RequestBody Map<String, String> payload) {
 		Map<String, String> returnLoad = null;

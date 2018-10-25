@@ -8,7 +8,7 @@ Back-end API for our COSC 473 website that fetches and manipulates data stored i
 ## Schedules
 
 ### /nfl/schedules
-### method = GET
+### METHOD = GET
 returns schedule for the entire season for all teams
 
 ```
@@ -43,7 +43,7 @@ Example Response
 ```
 
 ### /nfl/schedules/teams/{team}
-###  method = GET
+###  METHOD = GET
 return all games for a team for an entire season
 example call: /nfl/schedules/teams/Steelers
 
@@ -60,7 +60,7 @@ Example Response
 ```
 
 ### /nfl/schedules/weeks/{week}
-###  method = GET
+###  METHOD = GET
 return all games for a given week of the nfl season
 example call: /nfl/schedules/weeks/2
 
@@ -79,7 +79,7 @@ Example Response
 ## Teams
 
 ### /nfl/teams
-###  method = GET
+###  METHOD = GET
 return all teams in the current NFL season
 example call: /nfl/teams
 
