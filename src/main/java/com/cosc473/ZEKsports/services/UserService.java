@@ -35,9 +35,10 @@ public class UserService {
 		returnLoad.put("userName", user.getUserName());
 		emailLoad.put("toAddress", user.getUserEmail());
 		emailLoad.put("subject", "Welcome to ZEKsports");
-		emailLoad.put("body",
-				"Hello " + user.getUserName() + "!<br><br>" + "This email is to confirm your registration to ZEKsports.<br><br>"
-						+ "<a href=" + createVerifyUrl(user.getUserEmail(), user.getId()) + ">Click here to confirm your email address</a><br><br>" + "Best, <br><br>The ZEKsports dev team");
+		emailLoad.put("body", "Hello " + user.getUserName() + "!<br><br>"
+				+ "This email is to confirm your registration to ZEKsports.<br><br>" + "<a href="
+				+ createVerifyUrl(user.getUserEmail(), user.getId())
+				+ ">Click here to confirm your email address</a><br><br>" + "Best, <br><br>The ZEKsports dev team");
 		Email email = emailService.createEmail(emailLoad);
 		emailService.sendEmail(email);
 		return returnLoad;
@@ -53,6 +54,20 @@ public class UserService {
 		byte[] salt = user.getSalt();
 		byte[] password = user.getPassword();
 		if (Password.isExpectedPassword(passwordArray, salt, password)) {
+			if (!user.isVerified()) {
+				HashMap<String, String> emailLoad = new HashMap<String, String>();
+				emailLoad.put("toAddress", user.getUserEmail());
+				emailLoad.put("subject", "Confirmation Email for ZEKsports");
+				emailLoad.put("body",
+						"Hello " + user.getUserName() + "!<br><br>"
+								+ "This email is to confirm your registration to ZEKsports.<br><br>" + "<a href="
+								+ createVerifyUrl(user.getUserEmail(), user.getId())
+								+ ">Click here to confirm your email address</a><br><br>"
+								+ "Best, <br><br>The ZEKsports dev team");
+				Email email = emailService.createEmail(emailLoad);
+				emailService.sendEmail(email);
+				throw new Exception("Email is not verified, confirmation email sent again.");
+			}
 			returnLoad.put("userName", user.getUserName());
 			returnLoad.put("teamSubscription", user.getTeamSubscription());
 			return returnLoad;
