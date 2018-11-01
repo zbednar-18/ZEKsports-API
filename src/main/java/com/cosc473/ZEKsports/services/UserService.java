@@ -22,16 +22,20 @@ public class UserService {
 
 	public HashMap<String, String> createUser(Map<String, String> payload) throws Exception {
 		User user = userRepository.findByuserName(payload.get("userName"));
+		User emailCheck = userRepository.findByuserEmail(payload.get("email"));
 		HashMap<String, String> returnLoad = new HashMap<String, String>();
 		HashMap<String, String> emailLoad = new HashMap<String, String>();
 		if (user != null) {
 			throw new Exception("Username is already in use");
 		}
+		if(emailCheck != null) {
+			throw new Exception("Email is already in use");
+		}
 		byte[] salt = Password.getNextSalt();
 		byte[] securePassword = Password.hash(payload.get("password").toCharArray(), salt);
 		user = new User(payload.get("userName"), securePassword, payload.get("email"), salt,
-				payload.get("teamSubscription"));
-		userRepository.insert(user);
+				payload.get("teamSubscription"), false);
+		userRepository.save(user);
 		returnLoad.put("userName", user.getUserName());
 		emailLoad.put("toAddress", user.getUserEmail());
 		emailLoad.put("subject", "Welcome to ZEKsports");

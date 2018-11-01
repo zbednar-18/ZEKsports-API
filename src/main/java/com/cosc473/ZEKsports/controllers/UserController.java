@@ -32,7 +32,7 @@ public class UserController {
 		try {
 			returnLoad = userService.createUser(payload);
 		} catch (Exception e) {
-			throw e;
+			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
 		}
 		return ResponseEntity.status(HttpStatus.CREATED).body(returnLoad);
 	}

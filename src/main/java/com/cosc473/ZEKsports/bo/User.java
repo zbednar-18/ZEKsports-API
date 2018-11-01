@@ -16,13 +16,13 @@ public class User {
 	private String teamSubscription;
 	private boolean verified;
 
-	public User(String userName, byte[] password, String userEmail, byte[] salt, String teamSubscription) {
+	public User(String userName, byte[] password, String userEmail, byte[] salt, String teamSubscription, boolean verified) {
 		this.userName = userName;
 		this.password = password;
 		this.userEmail = userEmail;
 		this.salt = salt;
 		this.teamSubscription = teamSubscription;
-		verified = false;
+		this.verified = verified;
 	}
 
 	public User() {
