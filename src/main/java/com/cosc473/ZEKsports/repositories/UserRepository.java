@@ -9,4 +9,5 @@ import com.cosc473.ZEKsports.bo.User;
 public interface UserRepository extends MongoRepository<User, String> {
 
 	public User findByuserName(String userName);
+	public User findByuserEmail(String userEmail);
 }

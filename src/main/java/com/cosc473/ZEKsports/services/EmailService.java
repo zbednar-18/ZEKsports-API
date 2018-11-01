@@ -13,32 +13,27 @@ import com.cosc473.ZEKsports.utils.EmailSender;
 
 @Service
 public class EmailService {
-	
+
 	@Autowired
 	private EmailRepository emailRepository;
-	
-	private String toAddress = null;
-	private String subject = null;
-	private String body = null;
-	private Email email;
-	private String dateSent;
 
-	public void createEmail(Map<String, String> payload) throws Exception {
-		
-		EmailSender emailSender = new EmailSender();
-		toAddress = payload.get("toAddress");
-		subject = payload.get("subject");
-		body = payload.get("body");
+	public Email createEmail(Map<String, String> payload) throws Exception {
+		String toAddress = payload.get("toAddress");
+		String subject = payload.get("subject");
+		String body = payload.get("body");
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-		dateSent = dtf.format(LocalDateTime.now());
+		String dateSent = dtf.format(LocalDateTime.now());
+		return new Email(toAddress, subject, body, dateSent);
 
+	}
+
+	public void sendEmail(Email userEmail) throws Exception {
+		EmailSender emailSender = new EmailSender();
 		try {
-			email = new Email(toAddress, subject, body, dateSent);
-			emailSender.sendEmail(email);
+			emailSender.sendEmail(userEmail);
 		} catch (Exception e) {
-			throw new Exception("Unable to send email, bad request");
+			throw new Exception("Unable to send email: " + e.getMessage());
 		}
-		
-		emailRepository.insert(email);
+		emailRepository.insert(userEmail);
 	}
 }

@@ -1,23 +1,35 @@
 package com.cosc473.ZEKsports.bo;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "Email")
 public class Email {
+
+	@Id
+	private String id;
 
 	private String toAddress;
 	private String subject;
 	private String body;
 	private String dateSent;
 
-	public Email() {
-	}
-
-	public Email(String toAddresses, String subject, String body, String dateSent) {
-		this.toAddress = toAddresses;
+	public Email(String toAddress, String subject, String body, String dateSent) {
+		this.toAddress = toAddress;
 		this.subject = subject;
 		this.body = body;
 		this.dateSent = dateSent;
+	}
+
+	public Email() {
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	public String getToAddress() {

@@ -1,23 +1,28 @@
 package com.cosc473.ZEKsports.bo;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "User")
 public class User {
+
+	@Id
+	private String id;
 
 	private String userName;
 	private byte[] password;
 	private String userEmail;
 	private byte[] salt;
 	private String teamSubscription;
+	private boolean verified;
 
-	public User(String userName, byte[] password, String userEmail, byte[] salt, String teamSubscription) {
-		super();
+	public User(String userName, byte[] password, String userEmail, byte[] salt, String teamSubscription, boolean verified) {
 		this.userName = userName;
 		this.password = password;
 		this.userEmail = userEmail;
 		this.salt = salt;
 		this.teamSubscription = teamSubscription;
+		this.verified = verified;
 	}
 
 	public User() {
@@ -63,4 +68,20 @@ public class User {
 		this.teamSubscription = teamSubscription;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public boolean isVerified() {
+		return verified;
+	}
+
+	public void setVerified(boolean verified) {
+		this.verified = verified;
+	}
+	
 }
